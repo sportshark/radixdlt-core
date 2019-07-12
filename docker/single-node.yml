@@ -43,6 +43,26 @@ services:
       options:
         max-size: "10m"
         max-file: "30"
-
+  abt:
+    environment:
+      RADIX_BOOTSTRAP_TRUSTED_NODE: http://core0:8080
+      PRIMETRUST_ACCOUNT: $PRIMETRUST_ACCOUNT
+      PRIMETRUST_USERNAME: $PRIMETRUST_USERNAME
+      PRIMETRUST_PASSWORD: $PRIMETRUST_PASSWORD
+      GMAIL_USERNAME: $GMAIL_USERNAME
+      GMAIL_PASSWORD: $GMAIL_PASSWORD
+      JAVA_OPTS: -server
+    image: radixdlt/abt:betanet2
+    labels:
+      com.radixdlt.roles: "abt"
+    networks:
+      - single_node
+    restart: "no"
+    ports:
+      - "8082:8082"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "30"
 networks:
   single_node:
